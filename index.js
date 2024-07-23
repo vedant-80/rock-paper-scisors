@@ -5,6 +5,9 @@ const paperBtn = document.querySelector('.paper');
 const scissorsBtn = document.querySelector('.scissors');
 const gameInfo = document.querySelector('.game-score');
 const playerSelectedImg = document.querySelector('.player-selected-option');
+const compSelectedOption = document.querySelector('.comp-selected-option');
+
+
 let pChoice = undefined; //initial player choice
 
 rockBtn.addEventListener('click', () => optionSelected('rock', '/assets/rock-icon2.png'));
@@ -30,7 +33,7 @@ function optionSelected(pChoice, imgSrc){
     //updates with new image
     const optionImg = document.createElement('img');
     optionImg.src = imgSrc;
-    optionImg.setAttribute('style', 'width: 200px; height: 200px;');
+    optionImg.setAttribute('style', 'width: 200px; height: 200px; background-color: white;');
     playerSelectedImg.appendChild(optionImg);
     console.log(pChoice)
 
@@ -39,57 +42,56 @@ function optionSelected(pChoice, imgSrc){
 
 
 
-if (pChoice == undefined){
+/*if (pChoice == undefined){
     const pickOption = document.createElement('h2');
     pickOption.textContent = "You need to pick rock, paper, or scissors!";
     pickOption.setAttribute('style', 'color: yellow; border: solid 2px yellow; text-align: center; padding: 4px; margin: 24px;')
     gameInfo.appendChild(pickOption);
+}*/
+
+
+
+function computerChoice(){
+    /*
+    Function: computerChoice
+    Inputs: None
+    Outputs:
+        - randomly selects rock, paper, or scissors
+        - displays image of selected choice in RPS
+    */
+
+    //Randomly selects R,P, or S
+    let num = Math.floor(Math.random()*3 + 1);
+    const compChoiceImg = document.createElement('img');
+    compChoiceImg.setAttribute('style', 'width: 200px; height: 200px; background-color: white;');
+    let compChoice;
+    switch(num){
+        case 1:
+            compChoice = 'rock';
+            compChoiceImg.src = '/assets/rock-icon2.png';
+            break;
+        case 2:
+            compChoice = 'paper';
+            compChoiceImg.src = '/assets/paper-icon.png'
+            break;
+        case 3:
+            compChoice = 'scissors';
+            compChoiceImg.src = '/assets/scissor-icon2.png'
+            break;
+    }
+    console.log('The computer picked ' + compChoice);
+    if (compSelectedOption.hasChildNodes()){
+        compSelectedOption.removeChild(compSelectedOption.lastChild);
+    }
+    compSelectedOption.appendChild(compChoiceImg);
+    return compChoice;
 }
-if (pChoice == 'rock'){
-    const rockImg = document.createElement('img');
-    rockImg.src = '/assets/rock-icon2.png';
-    rockImg.setAttribute('style', 'width: 200px; height: 200px;');
-    playerSelectedImg.appendChild(rockImg);
-    console.log('rock');
-}
-
-function selectionChecker(){
-    //pChoice is rock if rock button is clicked, paper if paper is clicked, etc.
-
-}
-
-selectionChecker();
 
 
-
-
-// function playerChoice(){
-
-//     let playerChoice = prompt('Rock, paper, or scissors?').toLowerCase();
-//     console.log('You chose ' + playerChoice);
-//     return playerChoice;
-// }
 // //Randomly determine computer choice
-// function computerChoice(){
-//     let num = Math.floor(Math.random()*3 + 1);
-//     let compChoice;
-//     switch(num){
-//         case 1:
-//             compChoice = 'rock';
-//             break;
-//         case 2:
-//             compChoice = 'paper';
-//             break;
-//         case 3:
-//             compChoice = 'scissors';
-//             break;
-//     }
-//     console.log('The computer picked ' + compChoice);
-//     return compChoice;
-// }
 // //Determine what causes a win, loss, or draw for one round
-// humanScore = 0;
-// botScore = 0;
+// pScore = 0;
+// compScore = 0;
 // function round(player, comp){
 //     if (player == 'rock'){
 //         if (comp == 'paper'){
