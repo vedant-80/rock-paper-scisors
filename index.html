@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-    <script src="index.js"></script>
+    <!-- <script src="index.js"></script> -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="topbar">
+        <h1>Rock, paper, scissors</h1>
+    </div>
+    <section class="game-screen">
+        <div class="left-screen">
+            <h2>Player</h2>
+            <div class="player-selected-option"></div>
+            <div class="options">
+                <div class="rock"><img src="assets/rock-icon2.png" width="60" height="60"></div>
+                <div class="paper"><img src="assets/paper-icon.png" width="60" height="60"></div>
+                <div class="scissors"><img src="assets/scissor-icon2.png" width="60" height="60"></div>
+            </div>
+        </div>
+        <div class="right-screen">
+            <h2>Computer</h2>
+            <div class="comp-selected-option"><img class="gif-container" src="assets/icon-rotation.gif"></div>
+        </div>
+    </section>
 </body>
 </html>

@@ -1,0 +1,84 @@
+html{
+    background-color: rgb(238, 255, 109);
+}
+
+h1, h2{
+    font-family: Tahoma;
+    font-weight: 500;
+}
+
+.topbar{
+    text-align: center;
+    border: black 3px solid;
+    margin: -10px;
+    margin-bottom: 12px;
+    background-color: black;
+    color: rgb(238, 255, 109);
+}
+
+.game-screen{
+    display: flex;
+    text-align: center;
+    /* border: rgb(255, 0, 0) 3px solid; */
+    
+}
+
+.game-screen, h2{
+    margin-bottom: 24px;
+}
+
+.left-screen{
+    flex: auto;
+    width: 50%;
+    margin: 5px;
+    /* border: black 2px solid; */
+}
+
+.right-screen{
+    flex: auto;
+    width: 50%;
+    margin: 5px;
+    /* border: black 2px solid; */
+}
+
+.player-selected-option{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    background-color: transparent;
+    border: solid black 4px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.comp-selected-option{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    border: solid black 4px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.gif-container{
+    width: inherit;
+    height: inherit;
+}
+
+.options{
+    display: flex;
+}
+
+.rock, .paper, .scissors{
+    flex: auto;
+    margin: 40px;
+    padding: 4px;
+    border-radius: 10px;
+    box-shadow: 0px 0px;
+    background-color: white;
+    transition: 0.2s ease;
+}
+
+.rock:hover, .paper:hover, .scissors:hover{
+    box-shadow: 3px 3px;
+}
