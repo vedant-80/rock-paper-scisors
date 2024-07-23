@@ -82,3 +82,10 @@ h1, h2{
 .rock:hover, .paper:hover, .scissors:hover{
     box-shadow: 3px 3px;
 }
+
+.game-score{
+    background-color: black;
+    margin: -10px;
+    padding-bottom: 160px;
+    padding-top: 12px;
+}
