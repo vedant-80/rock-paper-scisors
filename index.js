@@ -12,9 +12,10 @@ let pChoice = undefined; //initial player choice
 let pScore = 0;
 let compScore = 0;
 
-rockBtn.addEventListener('click', () => playRound('rock', '/assets/rock-icon2.png'));
-paperBtn.addEventListener('click', () => playRound('paper', '/assets/paper-icon.png'));
-scissorsBtn.addEventListener('click', () => playRound('scissors', '/assets/scissor-icon2.png'));
+rockBtn.addEventListener('click', () => simulateGame('rock', '/assets/rock-icon2.png'));
+paperBtn.addEventListener('click', () => simulateGame('paper', '/assets/paper-icon.png'));
+scissorsBtn.addEventListener('click', () => simulateGame('scissors', '/assets/scissor-icon2.png'));
+
 
 function optionSelected(pChoice, imgSrc){
     /*
@@ -70,7 +71,6 @@ function computerChoice(){
             compChoiceImg.src = '/assets/scissor-icon2.png'
             break;
     }
-        console.log('The computer picked ' + compChoice);
         if (compSelectedOption.hasChildNodes()){
             compSelectedOption.removeChild(compSelectedOption.lastChild);
         }
@@ -88,7 +88,7 @@ function playRound(pChoice, imgSrc){
         - Console message stating who wins
     */
     optionSelected(pChoice, imgSrc);
-    compChoice = computerChoice()
+    compChoice = computerChoice();
     if (pChoice == 'rock'){
         if (compChoice == 'paper'){
             loseMessage(pChoice, compChoice);
@@ -158,21 +158,33 @@ function updateScore(){
 
 }
 
+function simulateGame(pChoice, imgSrc){
+    playRound(pChoice, imgSrc);
+    if (pScore == 5 || compScore == 5){
+        scoreDetails.textContent = 'Game over. Final Score: ' + pScore + ' to ' + compScore + '. ';
+        reset();
+    }
+    
+}
 
-
-
-
-// //simulate a game
-// function runGame(){
-//     while (humanScore != 5 && botScore != 5){
-//         setTimeout(round(playerChoice(),computerChoice()), 1000);
-//     }
-//     if (humanScore > botScore){
-//         console.log("Game Over. You win!")
-//     } else{
-//         console.log("Game over. The computer wins!")
-//     }
-// }
-// runGame();
-
-
+function reset(){
+    //reset score, empty the image from player choice, change image to gif for comp, remove game-log text
+    pScore = 0;
+    compScore = 0;
+    if (playerSelectedImg.hasChildNodes()){
+        playerSelectedImg.removeChild(playerSelectedImg.lastChild);
+    }
+    if (compSelectedOption.hasChildNodes()){
+        compSelectedOption.removeChild(compSelectedOption.lastChild);
+        const restoreGif = document.createElement('img');
+        restoreGif.src = '/assets/icon-rotation.gif';
+        restoreGif.classList.add('gif-container');
+        compSelectedOption.appendChild(restoreGif);
+    }
+    if (gameInfo.hasChildNodes()){
+        while (Node.childNodes.length > 1){
+            gameInfo.removeChild(gameInfo.lastChild);
+        }
+    }
+    scoreDetails.textContent = 'New game has started';
+}
