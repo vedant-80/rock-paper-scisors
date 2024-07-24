@@ -12,9 +12,9 @@ let pChoice = undefined; //initial player choice
 let pScore = 0;
 let compScore = 0;
 
-rockBtn.addEventListener('click', () => simulateGame('rock', '/assets/rock-icon2.png'));
-paperBtn.addEventListener('click', () => simulateGame('paper', '/assets/paper-icon.png'));
-scissorsBtn.addEventListener('click', () => simulateGame('scissors', '/assets/scissor-icon2.png'));
+rockBtn.addEventListener('click', () => simulateGame('rock', './assets/rock-icon2.png'));
+paperBtn.addEventListener('click', () => simulateGame('paper', './assets/paper-icon.png'));
+scissorsBtn.addEventListener('click', () => simulateGame('scissors', './assets/scissor-icon2.png'));
 
 
 function optionSelected(pChoice, imgSrc){
@@ -60,15 +60,15 @@ function computerChoice(){
    switch(num){
         case 1:
             compChoice = 'rock';
-            compChoiceImg.src = '/assets/rock-icon2.png';
+            compChoiceImg.src = './assets/rock-icon2.png';
             break;
         case 2:
             compChoice = 'paper';
-            compChoiceImg.src = '/assets/paper-icon.png'
+            compChoiceImg.src = './assets/paper-icon.png'
             break;
         case 3:
             compChoice = 'scissors';
-            compChoiceImg.src = '/assets/scissor-icon2.png'
+            compChoiceImg.src = './assets/scissor-icon2.png'
             break;
     }
         if (compSelectedOption.hasChildNodes()){
@@ -177,7 +177,7 @@ function reset(){
     if (compSelectedOption.hasChildNodes()){
         compSelectedOption.removeChild(compSelectedOption.lastChild);
         const restoreGif = document.createElement('img');
-        restoreGif.src = '/assets/icon-rotation.gif';
+        restoreGif.src = './assets/icon-rotation.gif';
         restoreGif.classList.add('gif-container');
         compSelectedOption.appendChild(restoreGif);
     }
